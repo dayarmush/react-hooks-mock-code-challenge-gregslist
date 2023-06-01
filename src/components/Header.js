@@ -1,7 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import Search from "./Search";
 
-function Header({ search, setSearch }) {
+function Header({ filterSearch, search, isChecked, setIsChecked }) {
+
+  function updateCheck(e) {
+    setIsChecked(e.target.checked)
+  }
+
   return (
     <header>
       <h1>
@@ -10,7 +15,11 @@ function Header({ search, setSearch }) {
         </span>
         gregslist
       </h1>
-      <Search search={search} setSearch={setSearch}/>
+      <Search filterSearch={filterSearch} search={search}/>
+      <label>
+        <input type="checkbox" checked={isChecked} onChange={updateCheck}/>
+        <span>Sort Alphabetically</span>
+      </label>
     </header>
   );
 }

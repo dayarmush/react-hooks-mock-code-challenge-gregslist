@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 
-function Search({ search, setSearch}) {
+function Search({ filterSearch, search }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("submitted");
-  }
-
-  function filterSearch(e) {
-    setSearch(e.target.value)
   }
 
   return (
