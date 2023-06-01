@@ -14,7 +14,7 @@ function App() {
     fetch('http://localhost:6001/listings')
     .then(r => r.json())
     .then(listingData => setListings(listingData))
-  }, [isChecked])
+  }, [])
 
   if(!listings) return <h3>Loading...</h3>
 
@@ -22,26 +22,23 @@ function App() {
 
   if (isChecked) {
 
-    renderList = listings
+    const listingsCopy = [...listings]
+
+    renderList = listingsCopy
     .sort((a, b) => a.description.localeCompare(b.description))
     .filter(listing => listing.description.toLowerCase().includes(search.toLowerCase()))
-    .map(listing => {
-      return <ListingCard key={listing.id} listing={listing} setListings={setListings}/>
-  })
+    .map(listing => <ListingCard key={listing.id} listing={listing} setListings={setListings}/>)
 
   } else if (search) {
 
     renderList = listings
     .filter(listing => listing.description.toLowerCase().includes(search.toLowerCase()))
-    .map(listing => {
-      return <ListingCard key={listing.id} listing={listing} setListings={setListings}/>
-  })
+    .map(listing => <ListingCard key={listing.id} listing={listing} setListings={setListings}/>)
 
   } else {
 
-    renderList = listings.map(listing => {
-      return <ListingCard key={listing.id} listing={listing} setListings={setListings}/>
-    })
+    renderList = listings
+    .map(listing => <ListingCard key={listing.id} listing={listing} setListings={setListings}/>)
 
   }
 
@@ -57,6 +54,7 @@ function App() {
         search={search}
         isChecked={isChecked}
         setIsChecked={setIsChecked}
+        setListings={setListings}
       />
 
       <ListingsContainer 
