@@ -47,6 +47,12 @@
       "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Patates.jpg",
       "location": "Greenwich",
       "id": 8
+    },
+    {
+      "description": "test",
+      "image": "https://m.media-amazon.com/images/I/71+ika3BpaL.jpg",
+      "location": "Greenwich",
+      "id": 9
     }
   ]
 }
